@@ -1,5 +1,7 @@
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
+// ✅ Function to run after loader finishes
+function startAnimations() {
   // Nav Slide from Top
   gsap.from("#nav-bar", {
     y: -100,
@@ -7,9 +9,7 @@
     duration: 1,
     ease: "power4.out"
   });
-if (performance.navigation.type === 1 || performance.getEntriesByType("navigation")[0].type === "reload") {
-    window.location.href = "index.html";
-  }
+
   // Hero Section Pop
   gsap.from(".hero-section h1", {
     scale: 0.8,
@@ -35,7 +35,7 @@ if (performance.navigation.type === 1 || performance.getEntriesByType("navigatio
     ease: "bounce.out"
   });
 
-  // About Image Clip Reveal
+  // About Image Reveal
   gsap.from(".about-image img", {
     scrollTrigger: {
       trigger: ".about-image img",
@@ -59,7 +59,7 @@ if (performance.navigation.type === 1 || performance.getEntriesByType("navigatio
     ease: "power3.out"
   });
 
-  // Product Cards Floating Zoom
+  // Product Cards
   gsap.utils.toArray(".product-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -75,7 +75,7 @@ if (performance.navigation.type === 1 || performance.getEntriesByType("navigatio
     });
   });
 
-  // Service Card Rotation and Lift
+  // Service Cards
   gsap.utils.toArray(".service-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -91,60 +91,42 @@ if (performance.navigation.type === 1 || performance.getEntriesByType("navigatio
     });
   });
 
-  // Section Titles Slide In + Underline Expand
-  // Section Titles Slide In (All)
-gsap.utils.toArray(".section-title").forEach(title => {
-  gsap.from(title, {
-    scrollTrigger: {
-      trigger: title,
-      start: "top 90%",
-    },
-    y: 40,
-    opacity: 0,
-    duration: 0.8
+  // Section Titles
+  gsap.utils.toArray(".section-title").forEach(title => {
+    gsap.from(title, {
+      scrollTrigger: {
+        trigger: title,
+        start: "top 90%",
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8
+    });
   });
-});
 
-// Add Underline Animation Only for About Section
-const aboutTitle = document.querySelector("#about .section-title");
-if (aboutTitle) {
-  const underline = document.createElement("div");
-  underline.style.height = "3px";
-  underline.style.background = "#2e8b57";
-  underline.style.marginTop = "8px";
-  underline.style.width = "0%";
-  aboutTitle.appendChild(underline);
+  // Underline for About Title
+  const aboutTitle = document.querySelector("#about .section-title");
+  if (aboutTitle) {
+    const underline = document.createElement("div");
+    underline.style.height = "3px";
+    underline.style.background = "#2e8b57";
+    underline.style.marginTop = "8px";
+    underline.style.width = "0%";
+    aboutTitle.appendChild(underline);
 
-  gsap.to(underline, {
-    scrollTrigger: {
-      trigger: aboutTitle,
-      start: "top 90%",
-    },
-    width: "80%",
-    duration: 0.8,
-    delay: 0.3,
-    ease: "power2.out"
-  });
-}
-const menuToggle = document.getElementById('menu-toggle');
-const navText = document.getElementById('nav-text');
+    gsap.to(underline, {
+      scrollTrigger: {
+        trigger: aboutTitle,
+        start: "top 90%",
+      },
+      width: "80%",
+      duration: 0.8,
+      delay: 0.3,
+      ease: "power2.out"
+    });
+  }
 
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('open');
-  navText.classList.toggle('show');
-});
-
-// Optional: Hide nav on link click (mobile)
-document.querySelectorAll('#nav-text a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      navText.classList.remove('show');
-      menuToggle.classList.remove('open');
-    }
-  });
-});
-
-  // FAQ Bounce Reveal
+  // FAQ Animation
   gsap.utils.toArray(".faq-box").forEach((box, i) => {
     gsap.from(box, {
       scrollTrigger: {
@@ -160,7 +142,7 @@ document.querySelectorAll('#nav-text a').forEach(link => {
     });
   });
 
-  // Contact Section Slide from Bottom
+  // Contact Form
   gsap.from(".contact-form", {
     scrollTrigger: {
       trigger: ".contact-form",
@@ -171,3 +153,39 @@ document.querySelectorAll('#nav-text a').forEach(link => {
     duration: 1,
     ease: "expo.out"
   });
+}
+
+// ✅ Loading animation and then trigger other animations
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    gsap.to(".loader-screen", {
+      opacity: 0,
+      duration: 1,
+      onComplete: () => {
+        document.querySelector(".loader-screen").style.display = "none";
+
+        // 👉 Now start all animations
+        startAnimations();
+      }
+    });
+  }, 3000);
+});
+
+// ✅ Navbar mobile menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navText = document.getElementById('nav-text');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('open');
+  navText.classList.toggle('show');
+});
+
+// ✅ Close menu on mobile link click
+document.querySelectorAll('#nav-text a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navText.classList.remove('show');
+      menuToggle.classList.remove('open');
+    }
+  });
+});

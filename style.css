@@ -394,21 +394,41 @@ background-image: radial-gradient(
 .product-details {
   max-height: 0;
   overflow: hidden;
-  opacity: 0;
-  padding: 0;
-  margin-top: 10px;
+  transition: max-height 0.4s ease;
   background-color: #f7fbff;
+  padding: 0 0.1rem;
+  margin-top: 10px;
   border-left: 4px solid #00ff15;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  text-align: left;
-  transition: all 0.4s ease;
+  opacity: 0;
+  text-align: center;
+}
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #25D366;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: -0.5rem;
+}
+
+.whatsapp-link:hover {
+  text-decoration: underline;
+  color: #128C7E;
+}
+
+.whatsapp-icon {
+  width: 16px;   /* ✅ smaller width */
+  height: 16px;  /* ✅ smaller height */
+  object-fit: contain;
 }
 
 .product-details.active {
   opacity: 1;
-  padding: 1rem;
-  max-height: 500px; /* enough height to show all content */
+  padding: 0.1rem;
 }
 
 .product-details p {

@@ -171,16 +171,25 @@ window.addEventListener("load", () => {
   }, 3000);
 });
 
- function toggleDetails(button) {
+  function toggleDetails(button) {
   const currentDetails = button.nextElementSibling;
 
+  // Collapse all others
   document.querySelectorAll(".product-details").forEach(details => {
     if (details !== currentDetails) {
+      details.style.maxHeight = null;
       details.classList.remove("active");
     }
   });
 
-  currentDetails.classList.toggle("active");
+  // Toggle selected one
+  if (currentDetails.classList.contains("active")) {
+    currentDetails.style.maxHeight = null;
+    currentDetails.classList.remove("active");
+  } else {
+    currentDetails.style.maxHeight = currentDetails.scrollHeight + "px";
+    currentDetails.classList.add("active");
+  }
 }
 
 // ✅ Navbar mobile menu toggle

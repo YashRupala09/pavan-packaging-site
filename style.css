@@ -319,47 +319,6 @@ background-image: radial-gradient(
 }
 
 /* === Products === */
-.carousel-wrapper {
-  overflow: hidden;
-  height: 200px;
-  width: 100%;
-  margin: 2rem auto;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-}
-
-.carousel-track {
-  display: flex;
-  width: calc(200px * 16); /* 5 images duplicated = 10 images * 200px */
-  animation: slide-left 25s linear infinite;
-}
-
-.carousel-track img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover; /* Crops image to fill box without distortion */
-  flex-shrink: 0;
-}
-
-
-@keyframes slide-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-1000px); /* 5 images * 200px */
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-wrapper {
-    height: 160px;
-  }
-  .carousel-track img {
-    width: 160px;
-  }
-}
-
 /* === Products === */
 .products-grid {
   display: flex;
@@ -435,17 +394,21 @@ background-image: radial-gradient(
 .product-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  opacity: 0;
+  padding: 0;
+  margin-top: 10px;
+  background-color: #f7fbff;
+  border-left: 4px solid #00ff15;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: all 0.4s ease;
 }
 
-
-.product-details {
-  display: none;
-  margin-top: 1rem;
-  background-color: #8be9b1;
+.product-details.active {
+  opacity: 1;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  max-height: 500px; /* enough height to show all content */
 }
 
 .product-details p {

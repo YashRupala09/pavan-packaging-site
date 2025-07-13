@@ -170,24 +170,19 @@ window.addEventListener("load", () => {
     });
   }, 3000);
 });
-//btunn
-  function toggleDetails(button) {
+
+ function toggleDetails(button) {
   const currentDetails = button.nextElementSibling;
 
-  // Close all other detail panels smoothly
   document.querySelectorAll(".product-details").forEach(details => {
     if (details !== currentDetails) {
-      details.style.maxHeight = null;
+      details.classList.remove("active");
     }
   });
 
-  // Toggle the selected one
-  if (currentDetails.style.maxHeight) {
-    currentDetails.style.maxHeight = null;
-  } else {
-    currentDetails.style.maxHeight = currentDetails.scrollHeight + "px";
-  }
+  currentDetails.classList.toggle("active");
 }
+
 
 // ✅ Navbar mobile menu toggle
 const menuToggle = document.getElementById('menu-toggle');

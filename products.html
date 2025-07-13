@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products - Pavan Packaging</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
+  <!-- Navbar -->
   <div id="nav-bar">
-    <div id="nav-logo"><h3>Pavan Packaging</h3></div>
+    <div id="nav-logo">
+      <h3>Pavan Packaging</h3>
+    </div>
     <div id="nav-text">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -19,27 +25,67 @@
     </div>
   </div>
 
-   <!-- Products Section -->
+  <!-- Products Section -->
   <section id="products" class="section-content">
     <h2 class="section-title">Our Products</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <img src="./rt-1.jpg" alt="Product Image 1" />
+        <img src="./rt-2.jpg" alt="Product Image 2" />
+        <img src="./rt-3.jpg" alt="Product Image 3" />
+        <img src="./rt-5.jpg" alt="Product Image 4" />
+        <img src="./air-column-roll.jpg" alt="Product Image 5" />
+      </div>
+    </div>
+
     <div class="products-grid">
+
+      <!-- Product 1 -->
       <div class="product-card">
         <img src="./Air-Column-Bags-5.jpeg" alt="Air Column Bags" />
         <h3>Air Column Bags</h3>
         <p>Protective packaging for fragile items during shipping.</p>
+        <button class="buy-btn" onclick="toggleDetails(this)">Buy This Product</button>
+        <div class="product-details">
+          <p><strong>Size:</strong> Custom sizes available</p>
+          <p><strong>Price:</strong> ₹375-450 per Kg (bulk rates available)</p>
+          <p><strong>Contact:</strong> +91 77780 14007</p>
+          <p><em>Call us to order or get custom size options.</em></p>
+        </div>
       </div>
+
+      <!-- Product 2 -->
       <div class="product-card">
         <img src="./images.jpg" alt="Electronics Wrap" />
         <h3>Electronics Wrap</h3>
-        <p>Shock-absorbing wrap for electronics, gadgets, and mobile devices.</p>
+        <p>Shock-absorbing wrap for gadgets, and electronics devices.</p>
+        <button class="buy-btn" onclick="toggleDetails(this)">Buy This Product</button>
+        <div class="product-details">
+          <p><strong>Size:</strong> Custom sizes available</p>
+          <p><strong>Price:</strong> ₹375-450 per Kg </p>
+          <p><strong>Contact:</strong> +91 77780 14007</p>
+          <p><em>Ideal for smartphones, tablets, and accessories.</em></p>
+        </div>
       </div>
+
+      <!-- Product 3 -->
       <div class="product-card">
         <img src="./bottole-img.jpg" alt="Bottle Packaging" />
         <h3>Bottle Packaging</h3>
         <p>Inflatable protection for glass and ceramic bottles.</p>
+        <button class="buy-btn" onclick="toggleDetails(this)">Buy This Product</button>
+        <div class="product-details">
+          <p><strong>Size:</strong> Custom sizes available</p>
+          <p><strong>Price:</strong> ₹375-450 per Kg </p>
+          <p><strong>Contact:</strong> +91 77780 14007</p>
+          <p><em>Perfect for wine, oil, or medicine bottles.</em></p>
+        </div>
       </div>
+
     </div>
   </section>
-    `
+
+
 </body>
+
 </html>

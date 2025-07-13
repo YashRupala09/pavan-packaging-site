@@ -183,7 +183,6 @@ window.addEventListener("load", () => {
   currentDetails.classList.toggle("active");
 }
 
-
 // ✅ Navbar mobile menu toggle
 const menuToggle = document.getElementById('menu-toggle');
 const navText = document.getElementById('nav-text');
